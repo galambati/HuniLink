@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>HuniLink</title>
+
+    <!-- Import Montserrat font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <!-- Normalize.css fixes lot of differences between browsers default styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css"/>
+
+    <!-- project wide styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/site.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/background.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/button.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/card.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/table.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/form.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/grid.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style/utils.css') }}">
+
+    <!-- page specific styling -->
+    <link rel="stylesheet" href="/static/style/detailed-view.css">
+    <script src="/static/js/main.js" defer></script>
+</head>
+
+<body>
+<div id="body-wrapper">
+    <header class="clearfix">
+        <a href="/"><img id="header-logo" src="/static/assets/hunilink-logo.png" alt="Hunilink Logo"></a>
+        <div id="header-auth">
+            {% if 'email' in session %}
+            {{ user_status }}<br><br>
+            <a href="/universities">
+                <button type="button" id="unis-button" class="button-red" style="float: right;">Egyetemek</button>
+            </a><br><br>
+            <a href="/logout">
+                <button type="button" id="logout" style="float: right;">Kijelentkezés</button>
+            </a>
+            {% else %}
+            {{ user_status }}<br><br>
+            <a href="/registration">
+                <button type="button" id="bt_register" style="float: right;">Regisztráció</button>
+            </a><br><br>
+            <a href="/login">
+                <button type="button" id="bt_login" style="float: right;">Bejelentkezés</button>
+            </a>
+            {% endif %}
+        </div>
+    </header>
+    <section>
+        <h1 class="title text-center">Üdvözlünk az oldalon!</h1>
+        <div class="card" id="card">
+            <h3>Pár szót az oldalról: </h3>
+            <p>
+                A HuniLink azért alakult, hogy segítsen összekötni diákokat, akik külföldi,
+                elsősorban
+                Európai egyetemeken szeretnének tanulni. Mindannyian végig jártuk a jelentkezési procedúrák nehézségeit
+                és
+                realizáltuk, hogy felbecsülhetetlen érték felvenni a kapcsolatot meglévő, illetve volt diákokkal az
+                egyetemről. Már a jelentkezés előtt is segíthetik a döntést a beszámolók és tanácsok, közben pedig az
+                érdeklődők támogatást kaphatnak a jelentkezési folyamatokban. Sikeres felvétel esetén pedig nagy előny,
+                ha
+                az ember úgy érkezik egy idegen környezetbe, hogy vannak már ott kapcsolatai. Mi úgy gondoljuk, hogy
+                ezekben
+                a legnagyobb segítséget olyanok tudnak nyújtani, akik hasonló környezetből jönnek, mint a jelentkezők és
+                van
+                valami, ami összeköti a két oldalt. Így ez a project és oldal a magyar közösséget célozza.
+                Jelentkezéseink
+                során realizáltuk, hogy nem olyan egyszerű egy adott egyetemen, illetve szakon megtalálni magyar
+                diákokat.
+                Nincs olyan elterjedt oldal, ahol össze lennének gyűjtve és a legtöbb nemzetközi közösségi platformon
+                nem
+                lehet külön magyarokra szűrni. Ezért alakult ez az oldal.</p><br>
+            <h3>JELENGLEG AZ OLDAL FEJLESZTÉS ALATT ÁLL</h3>
+
+
+            {% block content %}
+            {% endblock %}
+        </div>
+        <footer>
+            Updated 2022
+        </footer>
+    </section>
+</div>
+<div class="background">
+    <div class="dark-blue-layer"></div>
+    <div class="light-blue-layer"></div>
+</div>
+</body>
+</html>
